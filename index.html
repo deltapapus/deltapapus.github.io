@@ -1,1 +1,216 @@
-<h1>Test1</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pagina DeltaPapus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #11121a, #0a0b10);
+      color: #c8c8c8;
+      font-family: 'Ubuntu Mono', monospace;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    /* Container for content */
+    .container {
+      max-width: 900px;
+      width: 100%;
+      padding: 2rem 1rem;
+      background: #11121acc; /* Slight transparency */
+      border-radius: 8px;
+      box-shadow: 0 0 20px #4caf5099;
+      border: 1px solid #2e3a2e;
+    }
+
+    /* Navbar */
+    nav.navbar {
+      width: 100%;
+      max-width: 900px;
+      background: #0d1117;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 15px #8aff8055;
+    }
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .navbar-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px #8aff80;
+    }
+    .navbar-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .navbar-title {
+      font-weight: bold;
+      font-size: 1.4rem;
+      color: #8aff80;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+    .navbar-categories {
+      display: flex;
+      gap: 1.25rem;
+    }
+    .navbar-link {
+      color: #c8c8c8;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.2s ease-in-out;
+    }
+    .navbar-link:hover {
+      color: #8aff80;
+      text-decoration: underline;
+    }
+    .navbar-right {
+      display: flex;
+      gap: 1rem;
+    }
+    .navbar-icon {
+      background: #23272f;
+      border: none;
+      border-radius: 5px;
+      padding: 0.5rem 0.75rem;
+      color: #c8c8c8;
+      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: 0 0 8px #3f9e0a66;
+      transition: background-color 0.3s ease;
+    }
+    .navbar-icon:hover {
+      background-color: #2e422f;
+      color: #8aff80;
+      box-shadow: 0 0 14px #8aff80;
+    }
+
+    /* Main headings */
+    h1, h2, b {
+      margin: 0.3rem 0;
+      letter-spacing: 0.05em;
+    }
+    h1 {
+      color: #8aff80;
+      font-size: 2rem;
+      position: relative;
+      user-select: none;
+      white-space: nowrap;
+      font-weight: 700;
+      font-family: 'Ubuntu Mono', monospace;
+    }
+    /* Parpadeo cursor */
+    h1::after {
+      content: '|';
+      margin-left: 6px;
+      animation: blink 1s infinite;
+      color: #8aff80;
+      font-weight: 900;
+    }
+    @keyframes blink {
+      0%, 50% {opacity: 1;}
+      51%, 100% {opacity: 0;}
+    }
+    h2 {
+      font-size: 1.25rem;
+      color: #a0a0a0;
+      margin-top: 1rem;
+    }
+    b {
+      color: #8aff80;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* Paragraph */
+    p {
+      margin-top: 0.8rem;
+      font-size: 1rem;
+      color: #c0c0c0;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      padding: 1rem 0;
+      color: #444c44;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .navbar-categories {
+        display: none;
+      }
+      .navbar-title {
+        font-size: 1rem;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+      h2 {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <div class="navbar-logo">
+        <img src="https://avatars.githubusercontent.com/u/161966183?s=400&u=31eace7386cd10628e198e2e87dcbfdcc3800155&v=4" alt="Logo" />
+      </div>
+      <a href="https://sharpint.github.io" class="navbar-title">Home</a>
+      <div class="navbar-categories">
+        <a href="https://sharpint.github.io/docs" class="navbar-link">Docs</a>
+        <a href="https://sharpint.github.io/info" class="navbar-link">Info</a>
+        <a href="https://sharpint.github.io/sm" class="navbar-link">Social Media</a>
+        <a href="https://sharpint.github.io/drshitpost" class="navbar-link">DR Shitpost</a>
+      </div>
+    </div>
+    <div class="navbar-right">
+      <button class="navbar-icon" title="Search">🔍</button>
+      <button class="navbar-icon" title="Add">➕</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>* DeltaPapus</h1>
+    <h2>* Hi, this is my website, do u like it?</h2>
+    <b>* Well if u like it, remember to visit the other sections!</b>
+    <p>Goodbye and have fun reading my website!</p>
+  </div>
+
+  <div class="container">
+    <h1></h1>
+    <h2></h2>
+    <b></b>
+    <p></p>
+  </div>
+  <footer>© 2025 SharpINT Team</footer>
+</body>
+</html>
