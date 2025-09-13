@@ -107,6 +107,41 @@
       color: #8aff80;
       box-shadow: 0 0 14px #8aff80;
     }
+    .navbar-link,
+     a {
+      transition: all 0.2s ease-in-out;
+    }
+
+    .discord-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #11121acc;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 12px #8aff8088;
+    border: 1px solid #2e3a2e;
+    max-width: 400px;
+    margin-top: 1.5rem;
+  }
+
+   .discord-logo {
+    width: 48px;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 0 6px #8aff80;
+  }
+
+   .discord-text {
+    color: #c8c8c8;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+   .discord-text b {
+    color: #8aff80;
+  }
+
 
     /* Main headings */
     h1, h2, b {
@@ -124,7 +159,7 @@
     }
     /* Parpadeo cursor */
     h1::after {
-      content: '|';
+      content: '';
       margin-left: 6px;
       animation: blink 1s infinite;
       color: #8aff80;
@@ -182,9 +217,9 @@
   <nav class="navbar">
     <div class="navbar-left">
       <div class="navbar-logo">
-        <img src="https://avatars.githubusercontent.com/u/161966183?s=400&u=31eace7386cd10628e198e2e87dcbfdcc3800155&v=4" alt="Logo" />
+        <img src="https://cdn.discordapp.com/icons/1408971645569335420/a_ac331567216651740e961cb9efb7a2e5.gif?size=2048" alt="Logo DeltaPapus" />
       </div>
-      <a href="https://deltapapus.github.io" class="navbar-title">Home</a>
+      <a href="https://deltapapus.github.io" class="navbar-title">Info</a>
       <div class="navbar-categories">
         <a href="https://discord.gg/3rqcQjXFBW" class="navbar-link">Discord</a>
       </div>
@@ -198,16 +233,86 @@
   <div class="container">
     <h1>DeltaPapus</h1>
     <h2>Hola!, si no nos conoces:</h2>
-    <b>Somos un server de discord para socializar sobre</b>
-    <p>DELTARUNE y otros juegos de Toby Fox!</p>
+    <b>Somos un server de discord para socializar sobre DELTARUNE y otros juegos de Toby Fox!</b>
+    <p></p>
   </div>
-
+  <br>
   <div class="container">
     <h1>Ahora que?</h1>
     <h2>En esta página puedes:</h2>
-    <b>Ver los miembros del staff, cambios recientes y otras cositas.</b>
-    <p>zzz</p>
+    <b>Ver los miembros del staff, cambios recientes y otras cositas que agreguemos.</b>
+    <p>Tip: Arriba donde dice Discord obviamente te unes al Discord!</p>
   </div>
+  <br>
+  <h2>Votación Activa:</h2>
+  <br>
+  <div class="container">
+    <h1>Encuesta Mods 2025</h1>
+    <h2>Expira el 13 de septiembre del 2025</h2>
+    <b>Opciones: Tassingg, Nomik</b>
+    <p>Solamente en el server de discord, link abajo</p>
+    <a href="https://discord.gg/3rqcQjXFBW" target="_blank">
+     <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Ir a Discord" width="50">
+    </a>  
+  </div>
+  <br>
+  <h2>Canales del Servidor Esenciales:</h2>
+  <div class="container discord-info">
+  <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+  <div class="discord-text">
+    <b><a href="https://discord.com/channels/1408971645569335420/1408980366416412776" target="_blank" rel="noopener noreferrer" class="discord-link">Anuncios</a></b><br>
+    Pa q te enteres
+   </div>
+  </div>
+  <br>
+  <div class="container discord-info">
+  <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+  <div class="discord-text">  
+    <b><a href="https://discord.com/channels/1408971645569335420/1408995249539383478" target="_blank" rel="noopener noreferrer" class="discord-link">Autoroles</a></b><br>
+    Customiza pe
+   </div>
+  </div>
+  <br>
+  <div class="container discord-info">
+  <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+  <div class="discord-text">
+    <b><a href="https://discord.com/channels/1408971645569335420/1408974368977059980" target="_blank" rel="noopener noreferrer" class="discord-link">Reglas</a></b><br>
+    Reglas como dice el nombre
+   </div>
+  </div>
+  <br>
+  <div class="container discord-info">
+  <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+  <div class="discord-text">
+    <b><a href="https://discord.com/channels/1408971645569335420/1409216784963342597" target="_blank" rel="noopener noreferrer" class="discord-link">Aliados</a></b><br>
+    Aliados del Servidor
+   </div>
+  </div>
+  <br>
+  <div class="container discord-info">
+  <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+  <div class="discord-text">
+    <b><a href="https://discord.com/channels/1408971645569335420/1408999982564114472" target="_blank" rel="noopener noreferrer" class="discord-link">General</a></b><br>
+    Aqui e donde tu empieza a chatear
+   </div>
+  </div>
+  <br>
+    <div class="container discord-info">
+  <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+  <div class="discord-text">
+    <b><a href="https://discord.com/channels/1408971645569335420/1409000096200392715" target="_blank" rel="noopener noreferrer" class="discord-link">Momos</a></b><br>
+    Me parte de la risa
+   </div>
+  </div>
+  <br>
+    <div class="container discord-info">
+  <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+  <div class="discord-text">
+    <b><a href="https://discord.com/channels/1408971645569335420/1409000173048430752" target="_blank" rel="noopener noreferrer" class="discord-link">Multimedia</a></b><br>
+    Envien fotos de pies.
+   </div>
+  </div>
+  <br>
   <footer>© 2025 SharpINT Team</footer>
 </body>
 </html>
