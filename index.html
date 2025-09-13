@@ -213,6 +213,43 @@
       user-select: none;
     }
 
+    .discord-box {
+  background-color: #101010;
+  border: 2px solid #8aff80;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px auto;
+  width: 300px;
+  box-shadow: 0 0 15px #8aff80;
+  text-align: center;
+}
+
+.discord-box textarea {
+  width: 90%;
+  resize: none;
+  margin-bottom: 10px;
+  padding: 8px;
+  background-color: #1a1a1a;
+  color: white;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+.discord-box button {
+  background-color: #8aff80;
+  border: none;
+  padding: 8px 15px;
+  color: #000;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.discord-box button:hover {
+  background-color: #8aff80;
+}
+
+
     /* Responsive */
     @media (max-width: 600px) {
       .navbar-categories {
@@ -330,6 +367,38 @@
    </div>
   </div>
   <br>
-  <footer>© 2025 SharpINT Team</footer>
-</body>
+  <div class="discord-box">
+   <h1>Mensaje Anonimo</h1>
+   <textarea id="msgContent" placeholder="Escribe tu mensaje..." rows="4"></textarea>
+   <button id="sendMsg">Enviar mensaje al Servidor.</button>
+  </div>
+  </body>
+  <script>
+const webhookURL = 'https://discord.com/api/webhooks/1416438678607364186/2GPRfqqXCOwFRlEH4f3sMkwq-VTt81zaoA_eAlCG8MPp2R_Al42xtUp0ZTyX3fPYBICg';
+
+/* NUEVO: */
+   document.getElementById('sendMsg').addEventListener('click', () => {
+      const message = document.getElementById('messageInput').value;
+
+      fetch(webhookURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          content: message, // 👈 Aquí estás usando el contenido del <textarea>
+          username: 'DELTAPAPUS Web (Anonimo)',
+          avatar_url: 'https://images-ext-1.discordapp.net/external/SCdr_am-t0EaPUe_ol80B24aT86eiGbvaUPEuhfaP6M/%3Fsize%3D2048/https/cdn.discordapp.com/icons/1408971645569335420/a_ac331567216651740e961cb9efb7a2e5.gif?width=648&height=648'
+        })
+      })
+      .then(res => {
+        if (res.ok) alert('✅ Mensaje enviado.');
+        else throw new Error('❌ Error al enviar mensaje');
+      })
+      .catch(err => alert(err.message));
+    });
+  </script>
+
+</script>
 </html>
+
