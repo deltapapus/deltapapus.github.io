@@ -4,272 +4,8 @@
   <meta charset="UTF-8" />
   <title>Pagina DeltaPapus</title>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet" />
-  <style>
-    /* Reset and base */
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      background-image: url('https://cdn.discordapp.com/attachments/1408999982564114472/1416568104921600160/images_5.jpg?ex=68c7515a&is=68c5ffda&hm=5494f1ddf161ec9dbe7771ad6e9a8e4269df02b10b1515c126790059fb647d57&'); /* <-- tu imagen aquí */
-      background-size: cover; /* hace que cubra toda la pantalla */
-      background-position: center; /* la centra nice */
-      background-repeat: no-repeat; /* no se repite en mosaico */
-      margin: 0;
-      height: 100vh; /* asegúrate que ocupe toda la pantalla */
-      color: #c8c8c8;
-      font-family: 'Ubuntu Mono', monospace;
-      line-height: 1.5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-    }
-
-    /* Container for content */
-    .container {
-      max-width: 900px;
-      width: 100%;
-      padding: 2rem 1rem;
-      background: #11121acc; /* Slight transparency */
-      border-radius: 8px;
-      box-shadow: 0 0 20px #4caf5099;
-      border: 1px solid #2e3a2e;
-    }
-
-    /* Navbar */
-    nav.navbar {
-      width: 100%;
-      max-width: 900px;
-      background: #0d1117;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      margin-bottom: 2rem;
-      box-shadow: 0 0 15px #8aff8055;
-    }
-    .navbar-left {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .navbar-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 6px;
-      overflow: hidden;
-      flex-shrink: 0;
-      box-shadow: 0 0 8px #8aff80;
-    }
-    .navbar-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .navbar-title {
-      font-weight: bold;
-      font-size: 1.4rem;
-      color: #8aff80;
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      user-select: none;
-    }
-    .navbar-categories {
-      display: flex;
-      gap: 1.25rem;
-    }
-    .navbar-link {
-      color: #c8c8c8;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.2s ease-in-out;
-    }
-    .navbar-link:hover {
-      color: #8aff80;
-      text-decoration: underline;
-    }
-    .navbar-right {
-      display: flex;
-      gap: 1rem;
-    }
-    .navbar-icon {
-      background: #23272f;
-      border: none;
-      border-radius: 5px;
-      padding: 0.5rem 0.75rem;
-      color: #c8c8c8;
-      cursor: pointer;
-      font-size: 1.1rem;
-      box-shadow: 0 0 8px #3f9e0a66;
-      transition: background-color 0.3s ease;
-    }
-    .navbar-icon:hover {
-      background-color: #2e422f;
-      color: #8aff80;
-      box-shadow: 0 0 14px #8aff80;
-    }
-    .navbar-link,
-     a {
-      transition: all 0.2s ease-in-out;
-    }
-
-    .discord-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: #11121acc;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 0 12px #8aff8088;
-    border: 1px solid #2e3a2e;
-    max-width: 400px;
-    margin-top: 1.5rem;
-  }
-
-   .discord-logo {
-    width: 48px;
-    height: auto;
-    border-radius: 6px;
-    box-shadow: 0 0 6px #8aff80;
-  }
-
-   .discord-text {
-    color: #c8c8c8;
-    font-size: 1rem;
-    line-height: 1.3;
-  }
-
-   .discord-text b {
-    color: #8aff80;
-  }
-
-   .discord-link {
-    color: #8aff80;
-    text-decoration: none;
-    transition: text-decoration 0.2s ease;
-   }
-
-   .discord-link:hover {
-    text-decoration: underline;
-  }
-   .hyperlink-link {
-    color: #8aff80;
-    text-decoration: none;
-    transition: text-decoration 0.2s ease;
-   }
-   .hyperlink-link:hover {
-    text-decoration: underline;
-   }
-
-    /* Main headings */
-    h1, h2, b {
-      margin: 0.3rem 0;
-      letter-spacing: 0.05em;
-    }
-    h1 {
-      color: #8aff80;
-      font-size: 2rem;
-      position: relative;
-      user-select: none;
-      white-space: nowrap;
-      font-weight: 700;
-      font-family: 'Ubuntu Mono', monospace;
-    }
-    /* Parpadeo cursor */
-    h1::after {
-      content: '';
-      margin-left: 6px;
-      animation: blink 1s infinite;
-      color: #8aff80;
-      font-weight: 900;
-    }
-    @keyframes blink {
-      0%, 50% {opacity: 1;}
-      51%, 100% {opacity: 0;}
-    }
-    h2 {
-      font-size: 1.25rem;
-      color: #a0a0a0;
-      margin-top: 1rem;
-    }
-    b {
-      color: #8aff80;
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-
-    /* Paragraph */
-    p {
-      margin-top: 0.8rem;
-      font-size: 1rem;
-      color: #c0c0c0;
-    }
-
-    /* Footer */
-    footer {
-      margin-top: auto;
-      padding: 1rem 0;
-      color: #444c44;
-      font-size: 0.9rem;
-      user-select: none;
-    }
-
-    .discord-box {
-  background-color: #101010;
-  border: 2px solid #8aff80;
-  border-radius: 10px;
-  padding: 15px;
-  margin: 15px auto;
-  width: 300px;
-  box-shadow: 0 0 15px #8aff80;
-  text-align: center;
-}
-
-.discord-box textarea {
-  width: 90%;
-  resize: none;
-  margin-bottom: 10px;
-  padding: 8px;
-  background-color: #1a1a1a;
-  color: white;
-  border: 1px solid #333;
-  border-radius: 5px;
-}
-
-.discord-box button {
-  background-color: #8aff80;
-  border: none;
-  padding: 8px 15px;
-  color: #000;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.discord-box button:hover {
-  background-color: #8aff80;
-}
-
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .navbar-categories {
-        display: none;
-      }
-      .navbar-title {
-        font-size: 1rem;
-      }
-      h1 {
-        font-size: 1.6rem;
-      }
-      h2 {
-        font-size: 1rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="https://www.example.com/favicon.ico">
 </head>
 <body>
   <nav class="navbar">
@@ -283,9 +19,8 @@
       </div>
     </div>
     <div class="navbar-right">
-      <button class="navbar-icon" title="Search">🔍</button>
-      <button class="navbar-icon" title="Add">➕</button>
-    </div>
+      <button class="navbar-icon" title="Search" onclick="toggleSearchBox()">🔍</button>
+    </div>styles.css
   </nav>
 
   <div class="container">
@@ -306,7 +41,7 @@
   <div class="container discord-info">
   <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
   <div class="discord-text">
-    <b><a href="https://discord.com/channels/1408971645569335420/1408980366416412776" target="_blank" rel="noopener noreferrer" class="discord-link">Anuncios</a></b><br>
+    <b><a href="https://discord.com/channels/1408971645569335420/1408980366416412776" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">Anuncios</a></b><br>
     Pa q te enteres
    </div>
   </div>
@@ -314,23 +49,23 @@
   <div class="container discord-info">
   <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
   <div class="discord-text">  
-    <b><a href="https://discord.com/channels/1408971645569335420/1408995249539383478" target="_blank" rel="noopener noreferrer" class="discord-link">Autoroles</a></b><br>
+    <b><a href="https://discord.com/channels/1408971645569335420/1408995249539383478" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">Autoroles</a></b><br>
     Customiza pe
    </div>
   </div>
   <br>
   <div class="container discord-info">
-  <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+  <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" loading="lazy" class="discord-logo">
   <div class="discord-text">
-    <b><a href="https://discord.com/channels/1408971645569335420/1408974368977059980" target="_blank" rel="noopener noreferrer" class="discord-link">Reglas</a></b><br>
+    <b><a href="https://discord.com/channels/1408971645569335420/1408974368977059980" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">Reglas</a></b><br>
     Reglas como dice el nombre
    </div>
   </div>
   <br>
   <div class="container discord-info">
-  <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+  <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" loading="lazy" class="discord-logo">
   <div class="discord-text">
-    <b><a href="https://discord.com/channels/1408971645569335420/1409216784963342597" target="_blank" rel="noopener noreferrer" class="discord-link">Aliados</a></b><br>
+    <b><a href="https://discord.com/channels/1408971645569335420/1409216784963342597" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">Aliados</a></b><br>
     Aliados del Servidor
    </div>
   </div>
@@ -338,7 +73,7 @@
   <div class="container discord-info">
   <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
   <div class="discord-text">
-    <b><a href="https://discord.com/channels/1408971645569335420/1408999982564114472" target="_blank" rel="noopener noreferrer" class="discord-link">General</a></b><br>
+    <b><a href="https://discord.com/channels/1408971645569335420/1408999982564114472" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">General</a></b><br>
     Aqui e donde tu empieza a chatear
    </div>
   </div>
@@ -346,7 +81,7 @@
     <div class="container discord-info">
   <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
   <div class="discord-text">
-    <b><a href="https://discord.com/channels/1408971645569335420/1409000096200392715" target="_blank" rel="noopener noreferrer" class="discord-link">Momos</a></b><br>
+    <b><a href="https://discord.com/channels/1408971645569335420/1409000096200392715" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">Momos</a></b><br>
     Me parte de la risa
    </div>
   </div>
@@ -354,17 +89,19 @@
     <div class="container discord-info">
   <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
   <div class="discord-text">
-    <b><a href="https://discord.com/channels/1408971645569335420/1409000173048430752" target="_blank" rel="noopener noreferrer" class="discord-link">Multimedia</a></b><br>
+    <b><a href="https://discord.com/channels/1408971645569335420/1409000173048430752" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">Multimedia</a></b><br>
     Envien fotos de pies.
    </div>
   </div>
+  <br>
+  <h2>Nuestro staff.</h2>
 
   <br>  
   <h2>Juego de Roblox</h2>
   <div class="container discord-info">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Roblox_Logo_2022.svg/250px-Roblox_Logo_2022.svg.png" alt="Roblox Logo" class="discord-logo">
+  <img src="https://tse3.mm.bing.net/th/id/OIP.BcbMw170Er3JiCZBVwmt4AAAAA?r=0&pid=Api" alt="Roblox Logo" class="discord-logo">
   <div class="discord-text">
-    <b><a href="https://www.roblox.com/games/110309027263228/DELTApapus-el-juego" target="_blank" rel="noopener noreferrer" class="discord-link">Jueguito de Roblox</a></b><br>
+    <b><a href="https://www.roblox.com/games/110309027263228/DELTApapus-el-juego" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">Jueguito de Roblox</a></b><br>
     Jueguito pa que jueguen.
    </div>
   </div>
@@ -375,27 +112,22 @@
    <button id="sendMsg">Enviar mensaje al Servidor.</button>
   </div>
   </body>
-  <script>
-const webhookURL = 'https://discord.com/api/webhooks/1416438678607364186/2GPRfqqXCOwFRlEH4f3sMkwq-VTt81zaoA_eAlCG8MPp2R_Al42xtUp0ZTyX3fPYBICg';
+   <!-- Scripts -->
+   <script src="JS/script.js"></script>
+   <script src="JS/backend.js"></script>
+   <script src="JS/webhook.js"></script>
+   <script src="JS/buttons.js"></script>
+   <!-- Footer -->
+    <!-- Footer -->
+   <footer class="footer">
+    <p>Gracias por ver nuestra pagina!</p>
+    <ul>
+    <li><a href="https://youtube.com/@imtheDeltaPapu" target="_blank" class="hyperlink-link">YouTube</a></li>
+    <li><a href="https://discord.gg/3rqcQjXFBW" target="_blank" class="hyperlink-link">Discord</a></li>
+    </ul>
+    <button onclick="topFunction()" id="myBtn" class="button" title="Pa arriba">[(CLICK PARA IR ARRIBA!)]</button>
+    <p>&copy; 2025 DeltaPapus</p>
+   </footer>
 
-/* NUEVO: */
-document.getElementById('sendMsg').addEventListener('click', () => {
-    fetch(webhookURL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            content: '**zzz :zzz:**',
-            username: 'el que lee es un microbio',
-            avatar_url: 'https://cdn.discordapp.com/attachments/1408999982564114472/1416571017589162185/descarga_1.gif?ex=68c75411&is=68c60291&hm=6c82fdf2e93eb8099bd00d0e49c5d85b3ad3f60b38920995b11c7c8264fe5dc7&'
-        })
-    })
-    .then(res => {
-        if(res.ok) alert('Mensaje enviado!');
-        else throw new Error('Error al enviar mensaje');
-    })
-    .catch(error => alert(error.message));
-});
-
-</script>
 </html>
 
