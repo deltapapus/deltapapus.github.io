@@ -8,7 +8,7 @@
       apiKey: "AIzaSyDt7YQ72Ksx7r8qkhe_Ja3yEIruy2bdZD4",
       authDomain: "deltapapusdev.firebaseapp.com",
       projectId: "deltapapusdev",
-      storageBucket: "deltapapusdev.firebasestorage.app",
+  storageBucket: "deltapapusdev.appspot.com",
       messagingSenderId: "817602369970",
       appId: "1:817602369970:web:563cb5398499ed48232cab"
     };
@@ -32,7 +32,17 @@
       try {
         await auth.signInWithEmailAndPassword(email, password);
       } catch (err) {
-        alert('Error: ' + err.message);
+        if (err.code === 'auth/user-not-found') {
+          if (confirm('Usuario no encontrado. ¿Deseas registrarte con este correo?')) {
+            try {
+              await auth.createUserWithEmailAndPassword(email, password);
+            } catch (regErr) {
+              alert('Error al registrar: ' + regErr.message);
+            }
+          }
+        } else {
+          alert('Error: ' + err.message);
+        }
       }
     };
   logoutBtn.onclick = () => auth.signOut();
