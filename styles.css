@@ -318,6 +318,46 @@
   background-color: #7bf570;
   box-shadow: 0 0 15px rgba(138, 255, 128, 0.8);
 }
+    .staff-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .staff-card {
+      background: #23272a;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      padding: 24px 16px;
+      width: 220px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .staff-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+    }
+    .staff-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 12px;
+      border: 3px solid #8aff80;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .staff-card h1, .staff-card h3 {
+      font-family: 'Ubuntu Mono', monospace;
+      color: #8aff80;
+      margin: 8px 0 4px 0;
+      font-size: 1.3em;
+    }
+    .staff-card p {
+      color: #fff;
+      font-size: 1em;
+      margin: 0;
+    }
 
 
     /* Responsive */
