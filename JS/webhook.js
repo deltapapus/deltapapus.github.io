@@ -6,8 +6,8 @@ document.getElementById('sendMsg').addEventListener('click', () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            content: 'zzz zerber -10/10',
-            username: 'hater de deltapapus',
+            content: `mensaje random`,
+            username: 'DELTAPAPUS Web (Anonimo) [WEBHOOK]',
             avatar_url: 'https://cdn.discordapp.com/icons/1408971645569335420/a_ac331567216651740e961cb9efb7a2e5.gif?size=2048'
         })
     })
