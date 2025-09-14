@@ -179,11 +179,35 @@
    <h1>Mensaje Anonimo</h1>
    <button id="sendMsg">Enviar mensaje al Servidor.</button>
   </div>
+  <!-- Firebase Forum Section -->
+  <div class="container forum-section">
+    <h2>Foro DeltaPapus</h2>
+    <div id="forum-login">
+  <input type="email" id="loginEmail" placeholder="Correo electrónico" class="button" style="width:220px;max-width:100%;margin-right:0.5em;">
+  <input type="password" id="loginPassword" placeholder="Contraseña" class="button" style="width:180px;max-width:100%;margin-right:0.5em;">
+  <button id="loginBtn" class="button">Iniciar sesión</button>
+      <button id="logoutBtn" class="button" style="display:none;">Cerrar sesión</button>
+      <span id="user-info" style="margin-left:1em;"></span>
+    </div>
+    <div id="forum-content" style="display:none;">
+      <form id="postForm">
+        <textarea id="postText" placeholder="Escribe tu mensaje..." rows="3" style="width:100%;"></textarea>
+        <button type="submit" class="button">Publicar</button>
+      </form>
+      <div id="postsList"></div>
+    </div>
+      <p>Necesitas ayuda? Contacta a un DeltaProgramador en Discord para crear una cuenta.</p>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+     <script src="JS/webhook.js"></script>
   </body>
    <!-- Scripts -->
    <script src="JS/script.js"></script>
    <script src="JS/backend.js"></script>
-   <script src="JS/webhook.js"></script>
    <script src="JS/buttons.js"></script>
    <!-- Footer -->
     <!-- Footer -->
