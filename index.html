@@ -174,11 +174,7 @@
    </div>
   </div>
   <br>
-  <h2>Webhook:</h2>
-  <div class="discord-box">
-   <h1>Mensaje Anonimo</h1>
-   <button id="sendMsg">Enviar mensaje al Servidor.</button>
-  </div>
+
   <!-- Firebase Forum Section -->
   <div class="container forum-section">
     <h1>Foro DeltaPapus</h1>
@@ -198,17 +194,64 @@
     </div>
       <p>Necesitas ayuda? Contacta a un DeltaProgramador en Discord para crear una cuenta.</p>
   </div>
+</body>
+<!-- Scripts -->
+<script src="JS/webhook.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script> 
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  if (!window.firebaseInitialized) {
+    const firebaseConfig = {
+      apiKey: "AIzaSyDt7YQ72Ksx7r8qkhe_Ja3yEIruy2bdZD4",
+      authDomain: "deltapapusdev.firebaseapp.com",
+      projectId: "deltapapusdev",
+      storageBucket: "deltapapusdev.appspot.com",
+      messagingSenderId: "817602369970",
+      appId: "1:817602369970:web:563cb5398499ed48232cab"
+    };
+    firebase.initializeApp(firebaseConfig);
+    window.firebaseInitialized = true;
+  }
+  const auth = firebase.auth();
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
-     <script src="JS/webhook.js"></script>
-  </body>
-   <!-- Scripts -->
-   <script src="JS/script.js"></script>
-   <script src="JS/backend.js"></script>
-   <script src="JS/buttons.js"></script>
+  const loginBtn = document.getElementById('loginBtn');
+  const logoutBtn = document.getElementById('logoutBtn');
+  const userInfo = document.getElementById('user-info');
+  const forumContent = document.getElementById('forum-content');
+
+  loginBtn.onclick = async () => {
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    if (!email || !password) {
+      alert('Ingresa correo y contraseña');
+      return;
+    }
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      alert('¡Sesión iniciada!');
+    } catch (err) {
+      alert('Error: ' + err.message);
+    }
+  };
+  logoutBtn.onclick = () => auth.signOut();
+
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      loginBtn.style.display = 'none';
+      logoutBtn.style.display = '';
+      userInfo.textContent = `Hola, ${user.email}`;
+      forumContent.style.display = '';
+    } else {
+      loginBtn.style.display = '';
+      logoutBtn.style.display = 'none';
+      userInfo.textContent = '';
+      forumContent.style.display = 'none';
+    }
+  });
+});
+</script>
    <!-- Footer -->
     <!-- Footer -->
       <footer class="footer enhanced-footer">
