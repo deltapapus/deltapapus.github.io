@@ -8,6 +8,11 @@
   <link rel="icon" href="https://www.example.com/favicon.ico">
 </head>
 <body>
+  <div class="lang-switch">
+    <button id="lang-es-btn" class="button" onclick="setLang('es')" aria-selected="true">Español</button>
+    <button id="lang-en-btn" class="button" onclick="setLang('en')" aria-selected="false">English</button>
+  </div>
+  <br>
   <nav class="navbar">
     <div class="navbar-left">
       <div class="navbar-logo">
@@ -22,7 +27,7 @@
       <button class="navbar-icon" title="Search" onclick="toggleSearchBox()">🔍</button>
     </div>styles.css
   </nav>
-
+  <div class="lang-es">
   <div class="container">
     <h1>DeltaPapus</h1>
     <h2>Hola!, si no nos conoces:</h2>
@@ -36,8 +41,7 @@
     <b>Ver los miembros del staff, cambios recientes y otras cositas que agreguemos.</b>
     <p>Tip: Arriba donde dice Discord obviamente te unes al Discord!</p>
   </div>
-  <br>
-  <h2>Acerca del servidor.</h2>
+  <h2 class="center-text">Acerca del servidor.</h2>
   <br>
   <div class="container">
     <h1>Acerca de nosotros.</h1>
@@ -48,10 +52,8 @@
     <p>Te estaremos esperando en el Servidor de Discord cuando te quieras unir! :3</p>
     <button onclick="window.location.href='https://discord.gg/3rqcQjXFBW'" class="button">Unirme al Discord Hoy.</button>
   </div>
-  <br>
-  <h2>Nuestro equipo staff.</h2>
-  <br>
-  <h1>DeltaOwners</h1>
+  <h2 class="center-text">Nuestro equipo staff.</h2>
+  <h1 class="center-text">DeltaOwners</h1>
   <br>
   <div class="container staff-cards">
     <div class="staff-card">
@@ -68,16 +70,15 @@
       <img src="https://cdn.discordapp.com/avatars/1279536516594401291/058c4def19f7db66f0833d07458e1b30.webp?size=1024" alt="Staff 3" class="staff-avatar">
       <h3>Shebex</h3>
       <p>DeltaOwner del servidor.</p>
-      </div>
-      <div class="staff-card">
-        <img src="https://cdn.discordapp.com/avatars/853425834710663188/0cc95c814cd0cb2b76e676b0530de4a6.webp?size=1024" alt="Staff 3" class="staff-avatar">
-        <h3>Stereo</h3>
-        <p>DeltaOwner del servidor. Viva argentina wacho!!!</p>
-      </div>  
+    </div>
+    <div class="staff-card">
+      <img src="https://cdn.discordapp.com/avatars/853425834710663188/0cc95c814cd0cb2b76e676b0530de4a6.webp?size=1024" alt="Staff 3" class="staff-avatar">
+      <h3>Stereo</h3>
+      <p>DeltaOwner del servidor. Viva argentina wacho!!!</p>
+    </div>
   </div>
-  </div>
-  <br>
-  <h1>Moderadores</h1>
+  <h2 class="center-text">Tambien..</h2>
+  <h1 class="center-text">Moderadores</h1>
   <br>
   <div class="container staff-cards">
     <div class="staff-card">
@@ -165,8 +166,8 @@
       </div>
     </div>
   </div>
-  <h2>Juego de Roblox</h2>
-  <div class="container discord-info">
+  <h2 class="center-text">Juego de Roblox</h2>
+  <div class="container discord-info center-text">
   <img src="https://tse3.mm.bing.net/th/id/OIP.BcbMw170Er3JiCZBVwmt4AAAAA?r=0&pid=Api" alt="Roblox Logo" class="discord-logo">
   <div class="discord-text">
     <b><a href="https://www.roblox.com/games/110309027263228/DELTApapus-el-juego" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">Jueguito de Roblox</a></b><br>
@@ -174,7 +175,11 @@
    </div>
   </div>
   <br>
-
+  <h2 class="center-text">Webhook:</h2>
+  <div class="discord-box">
+   <h1>Mensaje Anonimo</h1>
+   <button id="sendMsg">Enviar mensaje al Servidor.</button>
+  </div>
   <!-- Firebase Forum Section -->
   <div class="container forum-section">
     <h1>Foro DeltaPapus</h1>
@@ -194,64 +199,195 @@
     </div>
       <p>Necesitas ayuda? Contacta a un DeltaProgramador en Discord para crear una cuenta.</p>
   </div>
-</body>
+    </div>
+    </div>
+    <br>
+    </div>
+  </body>
+<div class="lang-en">
+  <div class="container">
+  <h1>DeltaPapus</h1>
+  <h2>Hello! If you don't know us yet:</h2>
+  <b>We are a Discord server where you can socialize about DELTARUNE and other games by Toby Fox!</b>
+  <p>Tip: You can switch the language in the top corner.</p>
+  </div>
+  <br>
+  <div class="container">
+    <h1>Now what?</h1>
+    <h2>On this page you can:</h2>
+    <b>See the staff members, recent changes, and other cool stuff we add.</b>
+    <p>Tip: Click "Discord" up there to join the server, duh!</p>
+  </div>
+  <h2 style="text-align:center;">About the server.</h2>
+  <br>
+  <div class="container">
+    <h1>About us.</h1>
+    <b>DeltaPapus started as a tiny server, then we leveled up and now we got 100+ members.</b>
+    <p>The server is all about vibing over DELTARUNE and Toby Fox games, but you can chat about anything as long as you follow the rules.</p>
+    <p>Lemon founded the server on August 23, 2025, and now a squad of staff keeps it safe and fun for everyone. Or do they?</p>
+    <p>We try to keep the community friendly and chill (well, kinda), so you can share your interests and make new friends.</p>
+    <p>We’ll be waiting for you in the Discord server whenever you wanna join! :3</p>
+    <button onclick="window.location.href='https://discord.gg/3rqcQjXFBW'" class="button">Join the Discord today.</button>
+  </div>
+   <h2 class="center-text">Our staff team.</h2>
+   <h1 class="center-text">DeltaOwners</h1>
+  <br>
+  <div class="container staff-cards">
+    <div class="staff-card">
+      <img src="https://cdn.discordapp.com/avatars/802736771930390530/d9509cc09a2453941cd3622cc4b48bcf.webp?size=1024" alt="DeltaPapu" class="staff-avatar">
+      <h1>Lemon</h1>
+      <p>Founder of the server. He started it all.</p>
+    </div>
+    <div class="staff-card">
+      <img src="https://cdn.discordapp.com/avatars/1353189869027065936/2708094a66122e4739128f9323d8aa84.webp?size=1024" alt="Staff 2" class="staff-avatar">
+      <h3>The real kris dreemur</h3>
+      <p>DeltaOwner of the server.</p>
+    </div>
+    <div class="staff-card">
+      <img src="https://cdn.discordapp.com/avatars/1279536516594401291/058c4def19f7db66f0833d07458e1b30.webp?size=1024" alt="Staff 3" class="staff-avatar">
+      <h3>Shebex</h3>
+      <p>DeltaOwner of the server.</p>
+    </div>
+    <div class="staff-card">
+      <img src="https://cdn.discordapp.com/avatars/853425834710663188/0cc95c814cd0cb2b76e676b0530de4a6.webp?size=1024" alt="Staff 3" class="staff-avatar">
+      <h3>Stereo</h3>
+      <p>DeltaOwner of the server. W ARGENTINA!!!</p>
+    </div>
+  </div>
+  <h2 class="center-text">Also..</h2>
+  <h1 class="center-text">Moderators</h1>
+  <br>
+  <div class="container staff-cards">
+    <div class="staff-card">
+      <img src="https://cdn.discordapp.com/avatars/718658789460672693/b4e1621b6ee592673442d831037027a3.webp?size=1024" alt="DeltaPapu" class="staff-avatar">
+      <h1>Ameasuste</h1>
+      <p>Moderator, elected in the first server vote. Added lots of useful stuff.</p>
+    </div>
+    <div class="staff-card">
+      <img src="https://cdn.discordapp.com/avatars/1099816512816168970/a_a5254c6f9f5dc9f954dd28940b1c54f8.gif?size=2048" alt="Staff 2" class="staff-avatar">
+      <h3>ImTassinggTV</h3>
+      <p>Moderator. He created this page. Without him, you wouldn't be seeing this!</p>
+    </div>
+    <div class="staff-card">
+      <img src="https://cdn.discordapp.com/avatars/1066886606671323277/319c41a5f8fb8de6b356db0b6b7ada37.png?size=2048" alt="Staff 3" class="staff-avatar">
+      <h3>Nomik961</h3>
+      <p>Moderator. He's chill, likes moderating and being active. :3</p>
+    </div>
+  </div>
+  <div class="container" style="padding: 2rem 1rem;">
+    <h2 style="color:#8aff80; text-align:center; margin-bottom:0.5em;">Essential Server Channels</h2>
+    <p style="text-align:center; color:#c0c0c0; margin-bottom:1.5em;">These are the most important channels on the server. Use them to stay up to date, personalize your experience, and meet the community!</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2em; justify-items: center;">
+      <div class="discord-info">
+        <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+        <div class="discord-text">
+          <b><a href="https://discord.com/channels/1408971645569335420/1408980366416412776" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">#Announcements</a></b><br>
+          Want news? Follow this channel, although almost nobody posts updates.
+        </div>
+      </div>
+      <div class="discord-info">
+        <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+        <div class="discord-text">
+          <b><a href="https://discord.com/channels/1408971645569335420/1408995249539383478" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">#Autoroles</a></b><br>
+          Customize your roles, but you'll still be envied anyway.
+        </div>
+      </div>
+      <div class="discord-info">
+        <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+        <div class="discord-text">
+          <b><a href="https://discord.com/channels/1408971645569335420/1408974368977059980" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">#Rules</a></b><br>
+          Read the rules so you don't end up crying later.
+        </div>
+      </div>
+      <div class="discord-info">
+        <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+        <div class="discord-text">
+          <b><a href="https://discord.com/channels/1408971645569335420/1409216784963342597" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">#Allies</a></b><br>
+          Meet our partner servers. So you can see the friendship.
+        </div>
+      </div>
+      <div class="discord-info">
+        <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+        <div class="discord-text">
+          <b><a href="https://discord.com/channels/1408971645569335420/1408999982564114472" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">#General</a></b><br>
+          Hopefully it doesn't feel like your school when the teacher is gone.
+        </div>
+      </div>
+      <div class="discord-info">
+        <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+        <div class="discord-text">
+          <b><a href="https://discord.com/channels/1408971645569335420/1409000096200392715" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">#Memes</a></b><br>
+          I laughed so hard. Not telling you why.
+        </div>
+      </div>
+      <div class="discord-info">
+        <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+        <div class="discord-text">
+          <b><a href="https://discord.com/channels/1408971645569335420/1409000173048430752" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">#Multimedia</a></b><br>
+          Share pictures. Or something normal, please.
+        </div>
+      </div>
+      <div class="discord-info">
+        <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+        <div class="discord-text">
+          <b><a href="https://discord.com/channels/1408971645569335420/1409000336596668528" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">#Music</a></b><br>
+          Rock and roll, everyone. Phonk is worse.
+        </div>
+      </div>
+      <div class="discord-info">
+        <img src="https://img.icons8.com/color/512/discord-logo.png" alt="Discord Logo" class="discord-logo">
+        <div class="discord-text">
+          <b><a href="https://discord.com/channels/1408971645569335420/1409000173048430752" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">#Art</a></b><br>
+          If you have no creativity, you won't be able to do anything in life. -ImTassinggTV
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2 class="center-text">Roblox Game</h2>
+  <div class="container discord-info center-text">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.BcbMw170Er3JiCZBVwmt4AAAAA?r=0&pid=Api" alt="Roblox Logo" class="discord-logo">
+    <div class="discord-text">
+      <b><a href="https://www.roblox.com/games/110309027263228/DELTApapus-el-juego" target="_blank" rel="noopener noreferrer" loading="lazy" class="discord-link">DeltaPapus Roblox Game</a></b><br>
+      A fun little game for you to play.
+    </div>
+  </div>
+  <br>
+  <h2 class="center-text">Webhook:</h2>
+  <div class="discord-box">
+    <h1>Anonymous MSG</h1>
+    <button id="sendMsg">Send a message to the server.</button>
+  </div>
+  <!-- Firebase Forum Section -->
+  <div class="container forum-section">
+    <h1 class="center-text">DeltaPapus Forum</h1>
+    <div id="forum-login">
+      <input type="email" id="loginEmail" placeholder="Email" class="button" style="width:220px;max-width:100%;margin-right:0.5em;">
+      <input type="password" id="loginPassword" placeholder="Password" class="button" style="width:180px;max-width:100%;margin-right:0.5em;">
+      <button id="loginBtn" class="button">Log in</button>
+      <button id="logoutBtn" class="button" style="display:none;">Log out</button>
+      <span id="user-info" style="margin-left:1em;"></span>
+    </div>
+    <div id="forum-content" style="display:none;">
+      <form id="postForm">
+        <textarea id="postText" placeholder="Write your message..." rows="3" style="width:100%;"></textarea>
+        <button type="submit" class="button">Post</button>
+      </form>
+      <div id="postsList"></div>
+    </div>
+    <p>Need help? Contact a DeltaProgrammer on Discord to create your account.</p>
+  </div>
+</div>
 <!-- Scripts -->
-<script src="JS/webhook.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script> 
-<script>
-window.addEventListener('DOMContentLoaded', function() {
-  if (!window.firebaseInitialized) {
-    const firebaseConfig = {
-      apiKey: "AIzaSyDt7YQ72Ksx7r8qkhe_Ja3yEIruy2bdZD4",
-      authDomain: "deltapapusdev.firebaseapp.com",
-      projectId: "deltapapusdev",
-      storageBucket: "deltapapusdev.appspot.com",
-      messagingSenderId: "817602369970",
-      appId: "1:817602369970:web:563cb5398499ed48232cab"
-    };
-    firebase.initializeApp(firebaseConfig);
-    window.firebaseInitialized = true;
-  }
-  const auth = firebase.auth();
-
-  const loginBtn = document.getElementById('loginBtn');
-  const logoutBtn = document.getElementById('logoutBtn');
-  const userInfo = document.getElementById('user-info');
-  const forumContent = document.getElementById('forum-content');
-
-  loginBtn.onclick = async () => {
-    const email = document.getElementById('loginEmail').value.trim();
-    const password = document.getElementById('loginPassword').value;
-    if (!email || !password) {
-      alert('Ingresa correo y contraseña');
-      return;
-    }
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      alert('¡Sesión iniciada!');
-    } catch (err) {
-      alert('Error: ' + err.message);
-    }
-  };
-  logoutBtn.onclick = () => auth.signOut();
-
-  auth.onAuthStateChanged(user => {
-    if (user) {
-      loginBtn.style.display = 'none';
-      logoutBtn.style.display = '';
-      userInfo.textContent = `Hola, ${user.email}`;
-      forumContent.style.display = '';
-    } else {
-      loginBtn.style.display = '';
-      logoutBtn.style.display = 'none';
-      userInfo.textContent = '';
-      forumContent.style.display = 'none';
-    }
-  });
-});
-</script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="JS/webhook.js"></script>
+<script src="JS/language.js"></script>
+<script src="JS/forum.js"></script>
+<script src="JS/backend.js"></script>
+<script src="JS/buttons.js"></script>
+<script src="JS/scripts.js"></script>
+<script src="JS/navbar.js"></script>
    <!-- Footer -->
     <!-- Footer -->
       <footer class="footer enhanced-footer">

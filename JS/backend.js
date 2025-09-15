@@ -1,3 +1,4 @@
+ 
 // Mostrar usuario y controlar visibilidad
 const logoutBtn = document.getElementById('logoutBtn');
 const userInfo = document.getElementById('user-info');
