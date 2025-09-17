@@ -165,6 +165,9 @@
       </div>
     </div>
   </div>
+  <div class="container">
+    <iframe src="https://discord.com/widget?id=1408971645569335420&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+  </div>
   <h2 class="center-text">Juego de Roblox</h2>
   <div class="container discord-info center-text">
   <img src="https://tse3.mm.bing.net/th/id/OIP.BcbMw170Er3JiCZBVwmt4AAAAA?r=0&pid=Api" alt="Roblox Logo" class="discord-logo">
