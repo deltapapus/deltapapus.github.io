@@ -1,0 +1,7 @@
+[build]
+  # Esta línea es importante para que Netlify sepa dónde está el frontend.
+  publish = "dist" # o "public", o el nombre de tu carpeta de build
+
+[functions]
+  # Aquí le dices a Netlify dónde buscar tus funciones.
+  directory = "netlify/functions"

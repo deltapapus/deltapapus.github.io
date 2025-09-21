@@ -1,0 +1,16 @@
+medescubristepedro.php
+node_modules/
+dist/
+build/
+*.log
+.env
+.env.local
+.env.*.local
+coverage/
+*.tmp
+*.swp
+*.swo
+.vscode/
+.idea/
+*.code-workspace
+.sass-cache/
