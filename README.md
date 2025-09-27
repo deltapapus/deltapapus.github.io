@@ -40,3 +40,19 @@ En corto:
 - Haz commits con sentido (ej: fix: cache corrupta de Teams que rompía Discord 💀)
 
 - Abre Pull Request 🚪
+
+## 📜 Código de conducta
+
+- Respeta a los demás.
+
+- Undertale nos enseñó que hasta el más pequeño sprite tiene su historia ❤️
+ 
+- No spam, no drama, solo vibes nerd.
+
+## 🔥 Créditos
+
+### Dev: ImTassingg
+
+### DeltaPapus gang: todos los que pasan horas hablando de Toby Fox en el server 🫡
+
+### Open Source gang: porque odiamos lo propietario 😤
