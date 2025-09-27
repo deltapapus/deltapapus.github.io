@@ -359,10 +359,10 @@
       margin: 0;
     }
     .forum-section {
-  max-width: 700px;
-  margin: 2rem auto;
-  background: #11121acc;
-  border-radius: 10px;
+    max-width: 700px;
+    margin: 2rem auto;
+    background: #11121acc;
+    border-radius: 10px;
   box-shadow: 0 0 20px #4caf5099;
   border: 1px solid #2e3a2e;
   padding: 2rem 1.5rem;
@@ -454,6 +454,22 @@
 .discord-info.center-text {
   margin-left: auto;
   margin-right: auto;
+}
+.spinner {
+  border: 4px solid rgba(0, 0, 0, .1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #8aff80;
+  animation: spin 1s ease infinite;
+}
+@keyframes spin {
+  0% {
+    tranform: rotate(0deg);
+  }
+  100% {
+    tranform: rotate(360deg);
+  }
 }
     .lang-switch {
       text-align: right;
