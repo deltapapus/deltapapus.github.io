@@ -45,26 +45,11 @@ const statuses = [
   { name: "DELTAPAPUS | t$help", type: ActivityType.Watching },
 ];
 
+// List of premium users (user IDs)
 const premiumUsers: string[] = [
-  "imtassingg", // Usuario 1
-  "987654321098765432", // Usuario 2
+  "1099816512816168970", // imtassingtheggs
+  "1392765286071140485", // Usuario 2
 ];
-
-
-// Aquí guardamos si el modo premium está activo
-export const premiumToggle = {
-  name: "premium",
-  description: "Muestra si estás en modo premium",
-  execute: async (message: Message, args: string[]) => {
-    if (premiumUsers.includes(message.author.id)) {
-      await message.reply("✨ ¡Eres un usuario premium!");
-    } else {
-      await message.reply("⚡ No eres premium.");
-    }
-  },
-};
-
-// lista negra de servers (IDs)
 
 // Bot command interface
 interface BotCommand {
@@ -127,51 +112,13 @@ class TemmieBot {
     // Guild join event with DM to owner
     this.client.on(Events.GuildCreate, async (guild) => {
       console.log(
-        `📈 Joined new server: ${guild.name} (${guild.memberCount} members)`,
+        `📈 Joined new server: ${guild.name} (${guild.memberCount} members)`
       );
-
-      app.post("/award-role", async (req: Request, res: Response) => {
-        const { secret, userId, guildId, roleId } = req.body;
-
-        const client = new Client({
-          intents: [
-            GatewayIntentBits.Guilds,
-            GatewayIntentBits.GuildMessages,
-            GatewayIntentBits.MessageContent,
-            GatewayIntentBits.GuildMembers,
-          ],
-        });
-        const SECRET = "1408971645569335420";
-
-        if (secret !== SECRET) {
-          return res
-            .status(403)
-            .json({ success: false, message: "Clave inválida" });
-        }
-
-        if (!userId || !guildId || !roleId) {
-          return res
-            .status(400)
-            .json({ success: false, message: "Faltan campos" });
-        }
-
-        try {
-          const guild = await client.guilds.fetch(guildId);
-          const member = await guild.members.fetch(userId);
-
-          await member.roles.add(roleId, "1420244242449825864");
-
-          return res.json({ success: true, message: "Rol asignado con éxito" });
-        } catch (err: any) {
-          console.error("❌ Error asignando rol:", err);
-          return res.status(500).json({ success: false, message: err.message });
-        }
-      });
 
       try {
         const owner = await guild.fetchOwner();
         await owner.send(
-          "oLa soI temY, ahOrA soI tu aMigA eN ${guild.name}: siuuUUUUUU 😎🎉",
+          `oLa soI temY, ahOrA soI tu aMigA eN ${guild.name}: siuuUUUUUU 😎🎉`
         );
         console.log(`Mensaje enviado al dueño de ${guild.name}`);
       } catch (error) {
@@ -209,20 +156,18 @@ class TemmieBot {
       const command = this.commands.get(interaction.commandName);
       if (!command) {
         console.error(
-          `❌ No command matching ${interaction.commandName} was found.`,
+          `❌ No command matching ${interaction.commandName} was found.`
         );
         return;
       }
 
       try {
-        // Log command usage
         await storage.logCommandUsage({
           commandName: interaction.commandName,
           userId: interaction.user.id,
           serverId: interaction.guildId || "DM",
         });
 
-        // Update command usage count
         await storage.updateBotCommandUsage(interaction.commandName);
 
         await command.execute(interaction);
@@ -254,14 +199,14 @@ class TemmieBot {
           await message.delete();
           await message.channel.send(
             `🚫 ${message.author}, esa palabra está prohibida aquí. Si sigues así con ese comportamiento podrás ser castigado.
-            -# TemmieMod`,
+            -# TemmieMod`
           );
 
           // Add automatic warning case
           if (message.guildId) {
-            const caseNumber = await storage.getNextCaseNumber(
+            await storage.getNextCaseNumber(
               message.guildId,
-              message.author.id,
+              message.author.id
             );
           }
         } catch (error) {
@@ -282,14 +227,12 @@ class TemmieBot {
       if (!command) return;
 
       try {
-        // Log command usage
         await storage.logCommandUsage({
           commandName: commandName,
           userId: message.author.id,
           serverId: message.guildId || "DM",
         });
 
-        // Update command usage count
         await storage.updateBotCommandUsage(commandName);
 
         await command.execute(message, args);
@@ -306,9 +249,7 @@ class TemmieBot {
   }
 
   private async initializeCommands() {
-    // Initialize slash commands
     await this.initializeSlashCommands();
-    // Initialize text commands
     await this.initializeTextCommands();
   }
 
@@ -338,7 +279,7 @@ class TemmieBot {
         .setDescription("Mensaje de bienvenida oficial de DELTAPAPUS"),
       execute: async (interaction: ChatInputCommandInteraction) => {
         await interaction.reply(
-          "Hola, soy Temmie, el bot oficial de DELTAPAPUS, bienvenido al server! Espero disfrutes la estadía, recuerda pasarte por las reglas y chau.",
+          "Hola, soy Temmie, el bot oficial de DELTAPAPUS, bienvenido al server! Espero disfrutes la estadía, recuerda pasarte por las reglas y chau."
         );
       },
     };
@@ -387,7 +328,7 @@ class TemmieBot {
               name: "📝 Text Commands",
               value: "También puedes usar comandos de texto con `t$`",
               inline: false,
-            },
+            }
           )
           .setFooter({
             text: "Temmie Bot for DELTAPAPUS",
@@ -407,18 +348,18 @@ class TemmieBot {
           option
             .setName("usuario")
             .setDescription("Usuario a banear")
-            .setRequired(true),
+            .setRequired(true)
         )
         .addStringOption((option) =>
           option
             .setName("razon")
             .setDescription("Razón del ban")
-            .setRequired(false),
+            .setRequired(false)
         ),
       execute: async (interaction: ChatInputCommandInteraction) => {
         if (
           !interaction.memberPermissions?.has(
-            PermissionsBitField.Flags.BanMembers,
+            PermissionsBitField.Flags.BanMembers
           )
         ) {
           await interaction.reply({
@@ -438,7 +379,7 @@ class TemmieBot {
           if (interaction.guildId) {
             const caseNumber = await storage.getNextCaseNumber(
               interaction.guildId,
-              user.id,
+              user.id
             );
             await storage.addModerationCase({
               serverId: interaction.guildId,
@@ -450,7 +391,7 @@ class TemmieBot {
               moderatorTag: interaction.user.tag,
             });
             await interaction.reply(
-              `✅ ${user.username} ha sido baneado. Caso #${caseNumber}. Razón: ${reason}`,
+              `✅ ${user.username} ha sido baneado. Caso #${caseNumber}. Razón: ${reason}`
             );
           }
         } catch (error) {
@@ -470,7 +411,7 @@ class TemmieBot {
           option
             .setName("usuario")
             .setDescription("Usuario a poner en timeout")
-            .setRequired(true),
+            .setRequired(true)
         )
         .addIntegerOption((option) =>
           option
@@ -478,18 +419,18 @@ class TemmieBot {
             .setDescription("Duración del timeout en minutos (1-10080)")
             .setRequired(true)
             .setMinValue(1)
-            .setMaxValue(10080),
+            .setMaxValue(10080)
         )
         .addStringOption((option) =>
           option
             .setName("razon")
             .setDescription("Razón del timeout")
-            .setRequired(false),
+            .setRequired(false)
         ),
       execute: async (interaction: ChatInputCommandInteraction) => {
         if (
           !interaction.memberPermissions?.has(
-            PermissionsBitField.Flags.ModerateMembers,
+            PermissionsBitField.Flags.ModerateMembers
           )
         ) {
           await interaction.reply({
@@ -511,7 +452,7 @@ class TemmieBot {
           if (interaction.guildId) {
             const caseNumber = await storage.getNextCaseNumber(
               interaction.guildId,
-              user.id,
+              user.id
             );
             await storage.addModerationCase({
               serverId: interaction.guildId,
@@ -523,7 +464,7 @@ class TemmieBot {
               moderatorTag: interaction.user.tag,
             });
             await interaction.reply(
-              `✅ ${user.username} ha sido puesto en timeout por ${minutes} minutos. Caso #${caseNumber}. Razón: ${reason}`,
+              `✅ ${user.username} ha sido puesto en timeout por ${minutes} minutos. Caso #${caseNumber}. Razón: ${reason}`
             );
           }
         } catch (error) {
@@ -545,12 +486,12 @@ class TemmieBot {
             .setDescription("Cantidad de mensajes a eliminar (1-100)")
             .setRequired(true)
             .setMinValue(1)
-            .setMaxValue(100),
+            .setMaxValue(100)
         ),
       execute: async (interaction: ChatInputCommandInteraction) => {
         if (
           !interaction.memberPermissions?.has(
-            PermissionsBitField.Flags.ManageMessages,
+            PermissionsBitField.Flags.ManageMessages
           )
         ) {
           await interaction.reply({
@@ -564,6 +505,7 @@ class TemmieBot {
 
         try {
           if (interaction.channel && "bulkDelete" in interaction.channel) {
+            // @ts-ignore
             await interaction.channel.bulkDelete(amount);
             await interaction.reply({
               content: `✅ Se eliminaron ${amount} mensajes.`,
@@ -587,18 +529,18 @@ class TemmieBot {
           option
             .setName("usuario")
             .setDescription("Usuario a advertir")
-            .setRequired(true),
+            .setRequired(true)
         )
         .addStringOption((option) =>
           option
             .setName("razon")
             .setDescription("Razón de la advertencia")
-            .setRequired(true),
+            .setRequired(true)
         ),
       execute: async (interaction: ChatInputCommandInteraction) => {
         if (
           !interaction.memberPermissions?.has(
-            PermissionsBitField.Flags.ModerateMembers,
+            PermissionsBitField.Flags.ModerateMembers
           )
         ) {
           await interaction.reply({
@@ -614,7 +556,7 @@ class TemmieBot {
         if (interaction.guildId) {
           const caseNumber = await storage.getNextCaseNumber(
             interaction.guildId,
-            user.id,
+            user.id
           );
           await storage.addModerationCase({
             serverId: interaction.guildId,
@@ -626,7 +568,7 @@ class TemmieBot {
             moderatorTag: interaction.user.tag,
           });
           await interaction.reply(
-            `✅ ${user.username} ha sido advertido. Caso #${caseNumber}. Razón: ${reason}`,
+            `✅ ${user.username} ha sido advertido. Caso #${caseNumber}. Razón: ${reason}`
           );
         }
       },
@@ -640,7 +582,7 @@ class TemmieBot {
           option
             .setName("usuario")
             .setDescription("Usuario del que ver el historial")
-            .setRequired(true),
+            .setRequired(true)
         ),
       execute: async (interaction: ChatInputCommandInteraction) => {
         const user = interaction.options.getUser("usuario", true);
@@ -649,12 +591,12 @@ class TemmieBot {
 
         const cases = await storage.getModerationCases(
           interaction.guildId,
-          user.id,
+          user.id
         );
 
         if (cases.length === 0) {
           await interaction.reply(
-            `📋 ${user.username} no tiene casos de moderación.`,
+            `📋 ${user.username} no tiene casos de moderación.`
           );
           return;
         }
@@ -688,16 +630,18 @@ class TemmieBot {
   }
 
   private async initializeTextCommands() {
-    // Define all text commands with comprehensive functionality from original bot
     const commands: TextCommand[] = [
       {
+        name: "premium",
+        description: "Muestra si estás en modo premium",
+        execute: async (message: Message, args: string[]) => {
           if (premiumUsers.includes(message.author.id)) {
             await message.reply("✨ ¡Eres un usuario premium!");
           } else {
             await message.reply("⚡ No eres premium.");
           }
         },
-      };
+      },
       {
         name: "temmie",
         description: "Temmie greets you",
@@ -715,7 +659,7 @@ class TemmieBot {
             console.error("Cannot delete message - missing permissions");
           }
           await message.channel.send(
-            "Hola, soy Temmie, el bot oficial de DELTAPAPUS, bienvenido al server! Espero disfrutes la estadía, recuerda pasarte por las reglas y chau.",
+            "Hola, soy Temmie, el bot oficial de DELTAPAPUS, bienvenido al server! Espero disfrutes la estadía, recuerda pasarte por las reglas y chau."
           );
         },
       },
@@ -781,7 +725,7 @@ class TemmieBot {
         description: "Adriana meme",
         execute: async (message: Message, args: string[]) => {
           await message.reply(
-            "### ADRIANA SALTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE",
+            "### ADRIANA SALTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
           );
         },
       },
@@ -799,14 +743,13 @@ class TemmieBot {
           await message.reply("<@980467296088760361>");
         },
       },
-
       {
         name: "echo",
         description: "Echo command (admin only)",
         execute: async (message: Message, args: string[]) => {
           if (message.author.id !== "1099816512816168970") {
             await message.reply(
-              "❌ Solo mi amo ImTassingg puede usar esta vaina.",
+              "❌ Solo mi amo ImTassingg puede usar esta vaina."
             );
             return;
           }
@@ -823,7 +766,7 @@ class TemmieBot {
           } catch (error) {
             console.error("Error deleting message:", error);
             await message.channel.send(
-              `❌ No se pudo borrar el ijueputa mensaje.${error}`,
+              `❌ No se pudo borrar el ijueputa mensaje.${error}`
             );
           }
         },
@@ -842,7 +785,7 @@ class TemmieBot {
         execute: async (message: Message, args: string[]) => {
           if (message.author.id !== process.env.OWNER_ID) {
             await message.reply(
-              "❌ Solo el dueño del bot puede reiniciar el bot.",
+              "❌ Solo el dueño del bot puede reiniciar el bot."
             );
             return;
           }
@@ -858,7 +801,7 @@ class TemmieBot {
         execute: async (message: Message, args: string[]) => {
           if (
             !message.member?.permissions.has(
-              PermissionsBitField.Flags.ManageRoles,
+              PermissionsBitField.Flags.ManageRoles
             )
           ) {
             await message.reply("❌ No tienes permisos para asignar roles.");
@@ -882,7 +825,7 @@ class TemmieBot {
 
           if (!member || !role) {
             await message.reply(
-              "⚠️ Uso correcto: `t$addrole @usuario @rol` o `t$addrole USER_ID ROLE_ID`",
+              "⚠️ Uso correcto: `t$addrole @usuario @rol` o `t$addrole USER_ID ROLE_ID`"
             );
             return;
           }
@@ -890,11 +833,11 @@ class TemmieBot {
           try {
             await member.roles.add(role);
             await message.reply(
-              `✅ El rol **${role.name}** fue agregado a **${member.user.tag}**.`,
+              `✅ El rol **${role.name}** fue agregado a **${member.user.tag}**.`
             );
           } catch (error) {
             await message.reply(
-              "❌ Ocurrió un error al intentar asignar el rol.",
+              "❌ Ocurrió un error al intentar asignar el rol."
             );
           }
         },
@@ -905,7 +848,7 @@ class TemmieBot {
         execute: async (message: Message, args: string[]) => {
           if (
             !message.member?.permissions.has(
-              PermissionsBitField.Flags.ManageRoles,
+              PermissionsBitField.Flags.ManageRoles
             )
           ) {
             await message.reply("❌ No tienes permisos para quitar roles.");
@@ -929,7 +872,7 @@ class TemmieBot {
 
           if (!member || !role) {
             await message.reply(
-              "⚠️ Uso correcto: `t$rmvrole @usuario @rol` o `t$rmvrole USER_ID ROLE_ID`",
+              "⚠️ Uso correcto: `t$rmvrole @usuario @rol` o `t$rmvrole USER_ID ROLE_ID`"
             );
             return;
           }
@@ -937,11 +880,11 @@ class TemmieBot {
           try {
             await member.roles.remove(role);
             await message.reply(
-              `✅ El rol **${role.name}** fue removido de **${member.user.tag}**.`,
+              `✅ El rol **${role.name}** fue removido de **${member.user.tag}**.`
             );
           } catch (error) {
             await message.reply(
-              "❌ Ocurrió un error al intentar remover el rol.",
+              "❌ Ocurrió un error al intentar remover el rol."
             );
           }
         },
@@ -953,7 +896,7 @@ class TemmieBot {
         execute: async (message: Message, args: string[]) => {
           if (
             !message.member?.permissions.has(
-              PermissionsBitField.Flags.BanMembers,
+              PermissionsBitField.Flags.BanMembers
             )
           ) {
             await message.reply("❌ No tienes permisos para banear usuarios.");
@@ -966,7 +909,7 @@ class TemmieBot {
 
           if (!user) {
             await message.reply(
-              "❌ Debes mencionar a un usuario válido para banear.",
+              "❌ Debes mencionar a un usuario válido para banear."
             );
             return;
           }
@@ -979,7 +922,7 @@ class TemmieBot {
             if (message.guildId) {
               const caseNumber = await storage.getNextCaseNumber(
                 message.guildId,
-                user.id,
+                user.id
               );
               await storage.addModerationCase({
                 serverId: message.guildId,
@@ -991,7 +934,7 @@ class TemmieBot {
                 moderatorTag: message.author.tag,
               });
               await message.reply(
-                `✅ ${user.username} ha sido baneado. Caso #${caseNumber}. Razón: ${reason}`,
+                `✅ ${user.username} ha sido baneado. Caso #${caseNumber}. Razón: ${reason}`
               );
             }
           } catch (error) {
@@ -1005,11 +948,11 @@ class TemmieBot {
         execute: async (message: Message, args: string[]) => {
           if (
             !message.member?.permissions.has(
-              PermissionsBitField.Flags.ModerateMembers,
+              PermissionsBitField.Flags.ModerateMembers
             )
           ) {
             await message.reply(
-              "❌ No tienes permisos para poner usuarios en timeout.",
+              "❌ No tienes permisos para poner usuarios en timeout."
             );
             return;
           }
@@ -1020,7 +963,7 @@ class TemmieBot {
 
           if (!user) {
             await message.reply(
-              "❌ Debes mencionar a un usuario válido para el timeout.",
+              "❌ Debes mencionar a un usuario válido para el timeout."
             );
             return;
           }
@@ -1028,7 +971,7 @@ class TemmieBot {
           const minutes = parseInt(args[1]);
           if (!minutes || minutes < 1 || minutes > 10080) {
             await message.reply(
-              "❌ Debes especificar una duración válida en minutos (1-10080).",
+              "❌ Debes especificar una duración válida en minutos (1-10080)."
             );
             return;
           }
@@ -1042,7 +985,7 @@ class TemmieBot {
             if (message.guildId) {
               const caseNumber = await storage.getNextCaseNumber(
                 message.guildId,
-                user.id,
+                user.id
               );
               await storage.addModerationCase({
                 serverId: message.guildId,
@@ -1054,7 +997,7 @@ class TemmieBot {
                 moderatorTag: message.author.tag,
               });
               await message.reply(
-                `✅ ${user.username} ha sido puesto en timeout por ${minutes} minutos. Caso #${caseNumber}. Razón: ${reason}`,
+                `✅ ${user.username} ha sido puesto en timeout por ${minutes} minutos. Caso #${caseNumber}. Razón: ${reason}`
               );
             }
           } catch (error) {
@@ -1068,11 +1011,11 @@ class TemmieBot {
         execute: async (message: Message, args: string[]) => {
           if (
             !message.member?.permissions.has(
-              PermissionsBitField.Flags.ManageMessages,
+              PermissionsBitField.Flags.ManageMessages
             )
           ) {
             await message.reply(
-              "❌ No tienes permisos para eliminar mensajes.",
+              "❌ No tienes permisos para eliminar mensajes."
             );
             return;
           }
@@ -1080,16 +1023,17 @@ class TemmieBot {
           const amount = parseInt(args[0]);
           if (!amount || amount < 1 || amount > 100) {
             await message.reply(
-              "❌ Debes especificar una cantidad válida de mensajes (1-100).",
+              "❌ Debes especificar una cantidad válida de mensajes (1-100)."
             );
             return;
           }
 
           try {
             if ("bulkDelete" in message.channel) {
+              // @ts-ignore
               await message.channel.bulkDelete(amount);
               const reply = await message.channel.send(
-                `✅ Se eliminaron ${amount} mensajes.`,
+                `✅ Se eliminaron ${amount} mensajes.`
               );
               setTimeout(() => reply.delete().catch(() => {}), 3000);
             }
@@ -1104,11 +1048,11 @@ class TemmieBot {
         execute: async (message: Message, args: string[]) => {
           if (
             !message.member?.permissions.has(
-              PermissionsBitField.Flags.ModerateMembers,
+              PermissionsBitField.Flags.ModerateMembers
             )
           ) {
             await message.reply(
-              "❌ No tienes permisos para advertir usuarios.",
+              "❌ No tienes permisos para advertir usuarios."
             );
             return;
           }
@@ -1116,7 +1060,7 @@ class TemmieBot {
           const user = message.mentions.users.first();
           if (!user) {
             await message.reply(
-              "❌ Debes mencionar a un usuario para advertir.",
+              "❌ Debes mencionar a un usuario para advertir."
             );
             return;
           }
@@ -1124,7 +1068,7 @@ class TemmieBot {
           const reason = args.slice(1).join(" ");
           if (!reason) {
             await message.reply(
-              "❌ Debes especificar una razón para la advertencia.",
+              "❌ Debes especificar una razón para la advertencia."
             );
             return;
           }
@@ -1132,7 +1076,7 @@ class TemmieBot {
           if (message.guildId) {
             const caseNumber = await storage.getNextCaseNumber(
               message.guildId,
-              user.id,
+              user.id
             );
             await storage.addModerationCase({
               serverId: message.guildId,
@@ -1144,7 +1088,7 @@ class TemmieBot {
               moderatorTag: message.author.tag,
             });
             await message.reply(
-              `✅ ${user.username} ha sido advertido. Caso #${caseNumber}. Razón: ${reason}`,
+              `✅ ${user.username} ha sido advertido. Caso #${caseNumber}. Razón: ${reason}`
             );
           }
         },
@@ -1161,12 +1105,12 @@ class TemmieBot {
 
           const cases = await storage.getModerationCases(
             message.guildId,
-            user.id,
+            user.id
           );
 
           if (cases.length === 0) {
             await message.reply(
-              `📋 ${user.username} no tiene casos de moderación.`,
+              `📋 ${user.username} no tiene casos de moderación.`
             );
             return;
           }
@@ -1254,7 +1198,7 @@ class TemmieBot {
                 value:
                   "También puedes usar comandos slash: `/ping`, `/help`, `/ban`, etc.",
                 inline: false,
-              },
+              }
             )
             .setFooter({
               text: "Temmie Bot for DELTAPAPUS",
@@ -1284,15 +1228,17 @@ class TemmieBot {
           memberCount: guild.memberCount || 0,
         });
         console.log(
-          `📊 Registered server: ${guild.name} (${guild.memberCount} members)`,
+          `📊 Registered server: ${guild.name} (${guild.memberCount} members)`
         );
       } else {
         // Update member count if server exists
-        await storage.updateServerMemberCount(guild.id, guild.memberCount || 0);
+        await storage.updateServerMemberCount(
+          guild.id,
+          guild.memberCount || 0
+        );
       }
     }
   }
-  // set env vars
 
   public async deploySlashCommands() {
     const token = process.env.DISCORD_BOT_TOKEN;
@@ -1300,7 +1246,7 @@ class TemmieBot {
 
     if (!token || !clientId) {
       console.error(
-        "❌ Missing DISCORD_BOT_TOKEN or DISCORD_CLIENT_ID in environment variables",
+        "❌ Missing DISCORD_BOT_TOKEN or DISCORD_CLIENT_ID in environment variables"
       );
       return;
     }
@@ -1311,7 +1257,7 @@ class TemmieBot {
       console.log("🔄 Started refreshing application (/) commands.");
 
       const commandData = Array.from(this.commands.values()).map((command) =>
-        command.data.toJSON(),
+        command.data.toJSON()
       );
 
       // Deploy commands globally
@@ -1331,7 +1277,7 @@ class TemmieBot {
     if (!token) {
       console.error("❌ No DISCORD_BOT_TOKEN found in environment variables");
       console.log(
-        "Please set your Discord bot token in the environment variables",
+        "Please set your Discord bot token in the environment variables"
       );
       return;
     }
