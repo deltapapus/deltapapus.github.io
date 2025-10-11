@@ -41,7 +41,7 @@ sendBtn.addEventListener('click', () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            content: `https://x.com/imtassingg/status/1976656851141099764`,
+            content: `el primero que comente en: https://x.com/imtassingg/status/1976656851141099764 se lleva 100 dólares.`,
             username: 'soy un vacio por dentro',
             avatar_url: 'https://cdn.discordapp.com/attachments/1408999982564114472/1416996283268333689/La_Momoneta.jpg?ex=68c8e020&is=68c78ea0&hm=432a13157134d7b4bfaca0ad8239e4cd6697d937043c0969485af5c9ae629eaa&'
         })
