@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <title>DeltaPapus - Comunidad de Discord de Deltarune y más</title>
-  <meta name="description" content="DeltaPapus es una comunidad de Discord en español sobre Deltarune, Undertale y más. Únete para charlar, jugar y compartir memes.">
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="https://www.example.com/favicon.ico">
+  <meta content="DeltaPapus es una comunidad de Discord en español sobre Deltarune, Undertale y más. Únete para charlar, jugar y compartir memes."
+        name="description">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet"/>
+  <link href="styles.css" rel="stylesheet"/>
+  <link href="https://www.example.com/favicon.ico" rel="icon">
 </head>
 <body>
   <br>
@@ -15,6 +16,7 @@
       <a href="https://discord.gg/3rqcQjXFBW" class="navbar-logo" alt="Info" style="height:32px;vertical-align:middle;"><img src="https://cdn.discordapp.com/icons/1408971645569335420/a_8c29b24e902039643a70d5243978343d.gif?size=2048"/></a>
       <a href="https://discord.gg/3rqcQjXFBW" class="navbar-title">DeltaPapus!</a>
       <a href="https://youtube.com/@imtheDeltaPapu" class="navbar-link">YouTube</a>
+      ola chicosd udusauds
       </div> 
       <div class="navbar-categories">
       </div>
@@ -31,48 +33,11 @@
     <br>
     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7YRw26jPUV8?si=fRqkmLTeGd9vlTld" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
-  <br>
-  <div class="container">
-    <h1>Ahora que?</h1>
-    <h2>En esta página puedes:</h2>
-    <b>Ver los miembros del staff, cambios recientes y otras cositas que agreguemos.</b>
-    <p>Tip: Arriba donde dice Discord obviamente te unes al Discord!</p>
+  <div class="navbar-categories">
   </div>
-  <h2 class="center-text">Acerca del servidor.</h2>
-  <br>
-  <div class="container">
-    <h1>Acerca de nosotros.</h1>
-    <b>DeltaPapus empezo como un server pequeño, Luego fuimos alcanzando miembros hasta alcanzar los 100 de hoy en día.</b>
-    <p>El server se enfoca en socializar sobre DELTARUNE y otros juegos de Toby Fox, pero también puedes hablar de otros temas siempre y cuando sigas las reglas.</p>
-    <p>El server fue fundado por Lemon el 23 de agosto del 2025, y actualmente es administrado por un equipo de staff dedicado a mantener el server seguro y divertido para todos. ¿O no?</p>
-    <p>Nos gusta tener una comunidad amigable y acogedora *talvez no*, donde los miembros pueden compartir sus intereses y hacer nuevos amigos.</p>
-    <p>Te estaremos esperando en el Servidor de Discord cuando te quieras unir! :3</p>
-    <button onclick="window.location.href='https://discord.gg/3rqcQjXFBW'" class="button">Unirme al Discord Hoy.</button>
   </div>
-  <h2 class="center-text">Nuestro equipo staff.</h2>
-  <h1 class="center-text">DeltaOwners</h1>
-  <br>
-  <div class="container staff-cards">
-    <div class="staff-card">
-      <img src="https://cdn.discordapp.com/avatars/802736771930390530/2af8450cd1fd4a0e5855bd3103c4bfa6.webp?size=1024" alt="DeltaPapu" class="staff-avatar">
-      <h1>Lemon</h1>
-      <p>Fundador del server. Lo empezo todo.</p>
-    </div>
-    <div class="staff-card">
-      <img src="https://cdn.discordapp.com/avatars/1353189869027065936/caad2db4596f40cf6530574a3a10fade.webp?size=1024" alt="Staff 3" class="staff-avatar">
-      <h3>The real kris dreemur</h3>
-      <p>Familia wa</p>
-    </div>
-    <div class="staff-card">
-      <img src="https://cdn.discordapp.com/avatars/1279536516594401291/2c6457896beb4adc8d90613661f56ecc.webp?size=1024" alt="Staff 3" class="staff-avatar">
-      <h3>Shebex</h3>
-      <p>DeltaOwner del servidor.</p>
-    </div>
-    <div class="staff-card">
-      <img src="https://cdn.discordapp.com/avatars/853425834710663188/77bdc91914426ed4511d2a609fd5461a.webp?size=1024" alt="Staff 3" class="staff-avatar">
-      <h3>Stereo</h3>
-      <p>DeltaOwner del servidor. Viva argentina wacho!!!</p>
-    </div>
+  <div class="navbar-right">
+    <button class="navbar-icon" onclick="toggleSearchBox()" title="Search">🔍</button>
   </div>
   <h2 class="center-text">Tambien..</h2>
   <h1 class="center-text">Admins</h1>
@@ -209,25 +174,6 @@
   <div class="discord-box">
    <h1>Mensaje Anonimo</h1>
    <button id="sendMsg">Enviar mensaje al Servidor.</button>
-  </div>
-  <!-- Firebase Forum Section -->
-  <div class="container forum-section">
-    <h1>Foro DeltaPapus</h1>
-    <div id="forum-login">
-  <input type="email" id="loginEmail" placeholder="Correo electrónico" class="button" style="width:220px;max-width:100%;margin-right:0.5em;">
-  <input type="password" id="loginPassword" placeholder="Contraseña" class="button" style="width:180px;max-width:100%;margin-right:0.5em;">
-  <button id="loginBtn" class="button">Iniciar sesión</button>
-      <button id="logoutBtn" class="button" style="display:none;">Cerrar sesión</button>
-      <span id="user-info" style="margin-left:1em;"></span>
-    </div>
-    <div id="forum-content" style="display:none;">
-      <form id="postForm">
-        <textarea id="postText" placeholder="Escribe tu mensaje..." rows="3" style="width:100%;"></textarea>
-        <button type="submit" class="button">Publicar</button>
-      </form>
-      <div id="postsList"></div>
-    </div>
-      <p>Necesitas ayuda? Contacta a un DeltaProgramador en Discord para crear una cuenta.</p>
   </div>
   </body>
 <!-- Scripts -->

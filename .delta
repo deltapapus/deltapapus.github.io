@@ -1,8 +1,0 @@
-editor: "github.imtassingg, github.specialstreetkbob"
-deltan: "DELTAPAPUS Web"
-deltac: "Pagina Oficial de Deltapapus"
-deltab: "Ubuntu Mono"
-reactjs:   true
-nextjs:    false
-electron:  true
-node_modules: "cnight, dotenv, dotdelta, discord.js"
