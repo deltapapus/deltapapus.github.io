@@ -525,4 +525,33 @@
       h2 {
         font-size: 1rem;
       }
-  }
+    .container iframe[src*="youtube"], .container iframe[src*="youtube-nocookie"] {
+      width: 100%;
+      max-width: 560px;
+      aspect-ratio: 16/9;
+      height: auto;
+      display: block;
+      margin: 1rem auto;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.45), inset 0 1px rgba(255,255,255,0.03);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+
+    /* Subtle lift on hover/tap for desktop */
+    .container iframe[src*="youtube"]:hover,
+    .container iframe[src*="youtube-nocookie"]:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.55), inset 0 1px rgba(255,255,255,0.02);
+    }
+
+    /* Smaller radius on narrow screens */
+    @media (max-width: 420px) {
+      .container iframe[src*="youtube"],
+      .container iframe[src*="youtube-nocookie"] {
+        border-radius: 8px;
+      }
+    }
+    }
