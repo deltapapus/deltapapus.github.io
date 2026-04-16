@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Discord Webhook Interface</title>
+    <style>
+        body {
+            font-family: 'Ubuntu Mono', monospace;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .button {
+            background-color: #8aff80;
+            border: none;
+            color: black;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        /* Additional styling as needed */
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/webhook/index.html">Webhook</a></li>
+            <!-- Additional Links -->
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Discord Webhook Interface</h1>
+        <p>Send messages to your Discord channel via a webhook.</p>
+        <h2>Instructions / Instrucciones</h2>
+        <p>Fill in the webhook URL and your message, then hit send.</p>
+        <form id="webhookForm">
+            <label for="webhookUrl">Webhook URL:</label>
+            <input type="text" id="webhookUrl" name="webhookUrl" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit" class="button">Send / Enviar</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('webhookForm').onsubmit = async function(e) {
+            e.preventDefault();
+            const url = document.getElementById('webhookUrl').value;
+            const message = document.getElementById('message').value;
+            const response = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({ content: message }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            // Handle response
+        };
+    </script>
+</body>
+</html>
