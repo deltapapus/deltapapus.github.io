@@ -1,52 +1,58 @@
-const webhookURL = 'https://discord.com/api/webhooks/1416876487428149258/d3kFGL8F8gbPreEsv4Kcq7ECuqrkumr6r5vV5W5drudOSUgWaSDXjTQ16XBX78etSgeA';
+// Webhook handler para mensajes anónimos
+const sendMsgBtn = document.getElementById('sendMsg');
+const anonMessage = document.getElementById('anonMessage');
+const webhookMessage = document.getElementById('webhookMessage');
 
-const sendBtn = document.getElementById('sendMsg');
-const TIMEOUT = 30000; // 30 segundos
+if (sendMsgBtn) {
+  sendMsgBtn.addEventListener('click', async () => {
+    const message = anonMessage.value.trim();
 
-// Función para actualizar el botón con el tiempo restante
-function updateButton() {
-    const startTime = localStorage.getItem('timeoutStart');
-    if (!startTime) {
-        sendBtn.disabled = false;
-        sendBtn.textContent = 'Enviar mensaje al Servidor.';
-        return;
+    if (!message) {
+      showMessage('Por favor escribe un mensaje.', 'error');
+      return;
     }
-    
-    const elapsed = Date.now() - startTime;
-    const remaining = TIMEOUT - elapsed;
 
-    if (remaining > 0) {
-        sendBtn.disabled = true;
-        sendBtn.textContent = `Espera ${Math.ceil(remaining / 1000)}s...`;
-        setTimeout(updateButton, 1000);
-    } else {
-        // Timeout terminado, limpiar localStorage y resetear botón
-        localStorage.removeItem('timeoutStart');
-        sendBtn.disabled = false;
-        sendBtn.textContent = 'Enviar mensaje al Servidor.';
+    if (message.length > 500) {
+      showMessage('El mensaje es muy largo (máximo 500 caracteres).', 'error');
+      return;
     }
+
+    // Reemplaza con tu webhook URL de Discord
+    const webhookUrl = 'TU_WEBHOOK_URL_AQUI';
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: `📨 **Mensaje Anónimo**\n\n${message}\n\n_Enviado desde la página web_`
+        })
+      });
+
+      if (response.ok) {
+        showMessage('✅ Mensaje enviado correctamente. ¡Gracias!', 'success');
+        anonMessage.value = '';
+        document.getElementById('charCount').textContent = '0';
+      } else {
+        showMessage('❌ Error al enviar el mensaje. Intenta más tarde.', 'error');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      showMessage('❌ Error de conexión. Intenta más tarde.', 'error');
+    }
+  });
 }
 
-// Al cargar la página actualizamos el estado del botón
-updateButton();
+function showMessage(message, type) {
+  if (!webhookMessage) return;
 
-sendBtn.addEventListener('click', () => {
-    sendBtn.disabled = true;
-    sendBtn.textContent = 'Espera 30s...';
+  webhookMessage.textContent = message;
+  webhookMessage.className = `webhook-feedback ${type}`;
 
-    // Guardar el momento de inicio en localStorage
-    localStorage.setItem('timeoutStart', Date.now());
-
-    fetch(webhookURL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            content: `https://open.spotify.com/intl-es/artist/4q3ewBCX7sLwd24euuV69X?si=b38cf243833648b3`,
-            username: 'la momoneta (V1.0 by DELTAPAPUS Web)',
-            avatar_url: 'https://cdn.discordapp.com/attachments/1408999982564114472/1416996283268333689/La_Momoneta.jpg?ex=68c8e020&is=68c78ea0&hm=432a13157134d7b4bfaca0ad8239e4cd6697d937043c0969485af5c9ae629eaa&'
-        })
-    });
-
-    // Empezamos la actualización del botón para mostrar el timer
-    updateButton();
-});
+  // Limpiar mensaje después de 5 segundos
+  setTimeout(() => {
+    webhookMessage.className = 'webhook-feedback';
+  }, 5000);
+}
