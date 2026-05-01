@@ -373,105 +373,45 @@ body {
     font-size: 0.95rem;
 }
 
-/* TIER 1 - Helpers */
-.subsection-title:has(+ .staff-grid .staff-card):nth-of-type(5) ~ .staff-grid .staff-card {
+.staff-grid.tier-1 .staff-card {
     border-color: var(--tier1-color);
 }
 
-.subsection-title:has(+ .staff-grid .staff-card):nth-of-type(5) ~ .staff-grid .staff-card h4 {
+.staff-grid.tier-1 .staff-card h4 {
     color: var(--tier1-color);
-    font-weight: 700;
 }
 
-.subsection-title:has(+ .staff-grid .staff-card):nth-of-type(5) ~ .staff-grid .staff-card:hover {
-    border-color: var(--tier1-color);
-    box-shadow: 0 0 15px rgba(90, 211, 153, 0.4);
-}
-
-/* TIER 2 - Moderadores */
-.subsection-title:nth-of-type(6) ~ .staff-grid:nth-of-type(5) .staff-card {
+.staff-grid.tier-2 .staff-card {
     border-color: var(--tier2-color);
 }
 
-.subsection-title:nth-of-type(6) ~ .staff-grid:nth-of-type(5) .staff-card h4 {
-    color: var(--tier2-color);
-    font-weight: 700;
-}
-
-.subsection-title:nth-of-type(6) ~ .staff-grid:nth-of-type(5) .staff-card:hover {
-    border-color: var(--tier2-color);
-    box-shadow: 0 0 15px rgba(106, 184, 168, 0.4);
-}
-
-/* TIER 3 - Admins */
-.subsection-title:nth-of-type(4) ~ .staff-grid:nth-of-type(3) .staff-card {
+.staff-grid.tier-3 .staff-card {
     border-color: var(--tier3-color);
 }
 
-.subsection-title:nth-of-type(4) ~ .staff-grid:nth-of-type(3) .staff-card h4 {
-    color: var(--tier3-color);
-    font-weight: 700;
-}
-
-.subsection-title:nth-of-type(4) ~ .staff-grid:nth-of-type(3) .staff-card:hover {
-    border-color: var(--tier3-color);
-    box-shadow: 0 0 15px rgba(123, 199, 183, 0.4);
-}
-
-/* TIER 4 - DeltaOwners */
-.subsection-title:nth-of-type(3) ~ .staff-grid:nth-of-type(2) .staff-card {
+.staff-grid.tier-4 .staff-card {
     border-color: var(--tier4-color);
 }
 
-.subsection-title:nth-of-type(3) ~ .staff-grid:nth-of-type(2) .staff-card h4 {
-    color: var(--tier4-color);
-    font-weight: 700;
-}
-
-.subsection-title:nth-of-type(3) ~ .staff-grid:nth-of-type(2) .staff-card:hover {
-    border-color: var(--tier4-color);
-    box-shadow: 0 0 15px rgba(140, 214, 198, 0.4);
-}
-
-/* TIER 5 - Propietario */
-.subsection-title:nth-of-type(2) ~ .staff-grid:nth-of-type(1) .staff-card {
+.staff-grid.tier-5 .staff-card {
     border: 2px solid var(--tier5-color);
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 215, 0, 0.02));
+    background: linear-gradient(135deg, rgba(255,215,0,0.05), rgba(255,215,0,0.02));
     animation: goldenPulse 2s infinite;
 }
 
-.subsection-title:nth-of-type(2) ~ .staff-grid:nth-of-type(1) .staff-card h4 {
-    color: var(--tier5-color);
-    font-weight: 700;
-    font-size: 1.3rem;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-}
-
-.subsection-title:nth-of-type(2) ~ .staff-grid:nth-of-type(1) .staff-card:hover {
-    border: 2px solid var(--tier5-color);
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 
-                0 0 60px rgba(255, 215, 0, 0.3),
-                inset 0 0 20px rgba(255, 215, 0, 0.1);
-    transform: translateY(-12px) scale(1.02);
-}
-
-.subsection-title:nth-of-type(2) ~ .staff-grid:nth-of-type(1) .staff-card::before {
+.staff-grid.tier-5 .staff-card::before {
     content: '✨';
     position: absolute;
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1.5rem;
-    animation: twinkle 1.5s infinite;
 }
 
-.subsection-title:nth-of-type(2) ~ .staff-grid:nth-of-type(1) .staff-card::after {
+.staff-grid.tier-5 .staff-card::after {
     content: '👑';
     position: absolute;
     top: 10px;
     right: 15px;
-    font-size: 1.5rem;
-    animation: rotate 3s infinite linear;
 }
 
 .staff-avatar {
