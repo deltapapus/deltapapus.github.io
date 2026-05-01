@@ -35,7 +35,7 @@ html {
 }
 
 body {
-    font-family: 'font/font.ttf', system-ui;
+    font-family: 'Poppins', system-ui;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
