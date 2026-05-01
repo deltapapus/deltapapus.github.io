@@ -18,7 +18,8 @@ if (sendMsgBtn) {
     }
 
     // Reemplaza con tu webhook URL de Discord
-    const webhookUrl = 'TU_WEBHOOK_URL_AQUI';
+    const webhookUrl = 'https://discord.com/api/webhooks/1494238441225846804/lRTXmmoPa9FMGtc8OpD6Bak_PxdLygkXkK2VS56-JRsEz7wYE5JYtUNYGvqVRWat-6SF
+      ';
 
     try {
       const response = await fetch(webhookUrl, {
