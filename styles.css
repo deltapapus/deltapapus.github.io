@@ -50,7 +50,7 @@ body {
     top: 0;
     z-index: 1000;
     background-color: var(--bg-primary);
-    border-bottom: 1px solid linear-gradient(135deg, var(--primary-color), #5e5e66);
+    border-bottom: 1px solid var(--primary-color);
     box-shadow: var(--shadow);
 }
 
