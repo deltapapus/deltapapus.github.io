@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Media</title>
+
+<style>
+
+:root{
+  --bg:#1e1e2e;
+  --surface:#24273a;
+  --surface2:#2e3440;
+
+  --text:#cad3f5;
+  --subtext:#a5adcb;
+
+  --accent:#89b4fa;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:
+    linear-gradient(
+      135deg,
+      #1e1e2e,
+      #24273a,
+      #2e3440
+    );
+
+  color:var(--text);
+
+  font-family:
+    Inter,
+    system-ui,
+    sans-serif;
+
+  min-height:100vh;
+}
+
+header{
+  position:sticky;
+  top:0;
+
+  backdrop-filter:blur(20px);
+
+  background:rgba(30,30,46,.75);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.05);
+
+  padding:18px 30px;
+
+  z-index:999;
+}
+
+.logo{
+  font-size:2rem;
+  font-weight:900;
+
+  margin-bottom:16px;
+}
+
+.search{
+  width:100%;
+
+  padding:16px 20px;
+
+  border:none;
+  outline:none;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,.06);
+
+  color:white;
+
+  font-size:1rem;
+}
+
+.container{
+  padding:30px;
+}
+
+.grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fill,minmax(320px,1fr));
+
+  gap:26px;
+}
+
+.card{
+  text-decoration:none;
+  color:white;
+
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.thumb-wrapper{
+  position:relative;
+
+  border-radius:18px;
+  overflow:hidden;
+
+  background:#000;
+
+  aspect-ratio:16/9;
+
+  margin-bottom:12px;
+}
+
+.thumb{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  transition:.2s;
+}
+
+.card:hover .thumb{
+  transform:scale(1.03);
+}
+
+.info{
+  padding:0 4px;
+}
+
+.title{
+  font-weight:700;
+
+  line-height:1.4;
+
+  margin-bottom:6px;
+}
+
+.author{
+  color:var(--subtext);
+  font-size:.95rem;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+  <div class="logo">
+    Media
+  </div>
+
+  <input
+    type="text"
+    class="search"
+    id="search"
+    placeholder="Buscar videos..."
+  >
+
+</header>
+
+<div class="container">
+
+  <div class="grid" id="grid"></div>
+
+</div>
+
+<script>
+
+const grid = document.getElementById("grid");
+const search = document.getElementById("search");
+
+let videos = [];
+
+fetch("./videos.json")
+.then(r => r.json())
+.then(data => {
+
+  videos = data;
+
+  render(videos);
+});
+
+function render(items){
+
+  grid.innerHTML = "";
+
+  items.forEach(video => {
+
+    const thumb =
+      `https://img.youtube.com/vi/${video.youtube}/maxresdefault.jpg`;
+
+    const url =
+      `/media/watch.html?v=${video.youtube}`;
+
+    grid.innerHTML += `
+    
+      <a class="card" href="${url}">
+
+        <div class="thumb-wrapper">
+          <img
+            class="thumb"
+            src="${thumb}"
+            alt="${video.title}"
+          >
+        </div>
+
+        <div class="info">
+
+          <div class="title">
+            ${video.title}
+          </div>
+
+          <div class="author">
+            ${video.author}
+          </div>
+
+        </div>
+
+      </a>
+
+    `;
+  });
+}
+
+search.addEventListener("input", () => {
+
+  const q =
+    search.value.toLowerCase();
+
+  const filtered =
+    videos.filter(v =>
+
+      v.title.toLowerCase().includes(q)
+      ||
+      v.author.toLowerCase().includes(q)
+
+    );
+
+  render(filtered);
+});
+
+</script>
+
+</body>
+</html>
